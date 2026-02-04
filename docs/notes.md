@@ -1,8 +1,8 @@
-- [x] setup auth0 package
-- [ ] setup user management with auth0
+- [x] setup clerk package
+- [ ] setup user management with clerk
   - [ ] upon user registration redirect user to create player profile
-  - [ ] copy auth0 user id into player5 table and fill the rest of the fields
-- [x] update prisma schema based on atuh0 setup
+  - [ ] copy clerk user id into player5 table and fill the rest of the fields
+- [ ] update prisma schema based on clerk setup
 - [ ] create profile page fully
 - [ ] create lobby page fully with socket.io
 - [ ] create game page fully basd on [GamePlay](./Gameplay.md) docs
@@ -11,7 +11,7 @@
 - [ ] create contact page fully
 
 
-# Auth0 Profile
+# Clerk Profile
 
 `  id         Int       @id @default(autoincrement()) @db.UnsignedInt
   username   String    @db.VarChar(100)

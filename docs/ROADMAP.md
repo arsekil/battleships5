@@ -2,9 +2,8 @@
 
 ## Release 0.1
 
-- [x] Authentication
-- [ ] User Management
-- [ ] Player creation
+- [ ] Authentication
+- [ ] Game Logic
 
 ## Release 0.2
 
@@ -12,7 +11,8 @@
 
 ## Release 0.3
 
-- [ ] Game Page
+- [ ] User Management
+- [ ] Player creation
 
 ## Release 0.4
 
