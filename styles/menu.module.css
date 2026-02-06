@@ -1,0 +1,54 @@
+.menu {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	margin: 20px;
+	z-index: 1;
+}
+
+.container {
+	background-color: #ffffff;
+	border-radius: 100%;
+	z-index: 1;
+}
+
+.expandingMenu {
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	width: 400px;
+	height: 50px;
+	padding-left: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-items: space-between;
+	background-color: #ffffff;
+	z-index: -1;
+}
+
+.expandingMenu::after {
+	content: "";
+	position: absolute;
+	inset: auto 0 0 0;
+	height: 5px;
+	background: url('/wave.png') repeat-x bottom;
+	background-size: contain;
+}
+
+.expandedMenuStart {
+	position: absolute;
+	left: -21px;
+	width: 50px;
+	height: 50px;
+	background-color: #ffffff;
+	border-radius: 100%;
+}
+
+.expandedMenuEnd {
+	position: absolute;
+	left: clamp(80%, 380px, 400px);
+	height: 50px;
+	background-color: #ffffff;
+	border-radius: 100%;
+}
