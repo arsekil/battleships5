@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import styles from "@/styles/home.module.css";
 
+import Menu from "@/components/Menu/Menu";
 import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
@@ -16,9 +18,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BattleShips5",
-  description: "A batlleship clone game in NextJS",
+  description: "A battleship clone game in NextJS",
   icons: {
-    icon: "/loading.gif"
+    icon: "/favicon.ico"
   }
 };
 
@@ -31,7 +33,14 @@ export default function RootLayout({
     <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          {children}
+          <div className={styles.naval}>
+            <nav className={styles.nav}>
+              <Menu />
+            </nav>
+            <section>
+              {children}
+            </section>
+          </div>  
         </body>
       </html>
     </ClerkProvider>
