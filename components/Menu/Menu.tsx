@@ -19,8 +19,12 @@ export default function Menu() {
 			<div className={styles.container} onMouseEnter={handleMouseEnter}>
 				{!isExpanded && <Image src={"/ship.svg"} width={50} height={50} alt="ship" unoptimized />}
 			</div>
+			{isExpanded && 
+				<div className={styles.expandedMenuStart}>
+					 <Image src={"/lighthouse.png"} width={50} height={50} alt="lighthouse" unoptimized/>
+				</div>
+			}
 			{isExpanded && <div className={styles.expandingMenu} onMouseLeave={handleMouseLeave} >
-				<div className={styles.expandedMenuStart}></div>
 				<p>Expanded Menu</p>
 				<div className={styles.expandedMenuEnd}>
 					<Image src={"/ship.svg"} width={50} height={50} alt="ship" unoptimized />
