@@ -17,13 +17,13 @@ export default function Menu() {
 	return (
 		<menu className={styles.menu}>
 			<div className={styles.container} onMouseEnter={handleMouseEnter}>
-				{!isExpanded && <Image src={"/favicon.svg"} width={50} height={50} alt="ship" unoptimized />}
+				{!isExpanded && <Image src={"/ship.svg"} width={50} height={50} alt="ship" unoptimized />}
 			</div>
 			{isExpanded && <div className={styles.expandingMenu} onMouseLeave={handleMouseLeave} >
 				<div className={styles.expandedMenuStart}></div>
 				<p>Expanded Menu</p>
 				<div className={styles.expandedMenuEnd}>
-					<Image src={"/favicon.svg"} width={50} height={50} alt="ship" unoptimized />
+					<Image src={"/ship.svg"} width={50} height={50} alt="ship" unoptimized />
 				</div>
 			</div>}
 		</menu>
