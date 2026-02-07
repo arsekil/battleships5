@@ -16,7 +16,7 @@
 	position: absolute;
 	top: 0px;
 	left: 20px;
-	width: 600px;
+	width: 650px;
 	height: 50px;
 	padding-left: 50px;
 	display: flex;
@@ -55,10 +55,32 @@
 
 .expandedMenuEnd {
 	position: absolute;
-	left: clamp(80%, 580px, 600px);
+	left: clamp(80%, 630px, 650px);
 	height: 50px;
 	background-color: #ffffff;
 	border-radius: 100%;
+}
+
+.horizontalMenu {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-items: center;
+	gap: 35px;
+	list-style-type: none;
+}
+
+.menuitem {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-items: center;
+	gap: 3px;
+	cursor: pointer;
+}
+
+.verticalMenu {
+	display: none;
 }
 
 /* MAX-WIDTH: 500px */
@@ -66,7 +88,7 @@
 .menu {
 	position: absolute;
 	width: 50px;
-	height: 400px;
+	height: 470px;
 	margin: 20px;
 	z-index: 1;
 }
@@ -82,7 +104,7 @@
 	top: 20px;
 	left: 0px;
 	width: 50px;
-	height: 400px;
+	height: 470px;
 	padding-top: 50px;
 	display: flex;
 	flex-direction: column;
@@ -120,11 +142,39 @@
 
 .expandedMenuEnd {
 	position: absolute;
-	top: clamp(80%, 380px, 400px);
+	top: clamp(80%, 450px, 470px);
 	left: 0;
 	width: 50px;
 	height: 50px;
 	background-color: #ffffff;
 	border-radius: 100%;
+}
+
+.verticalMenu {
+	position: absolute;
+	left: 13px;
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.menuitem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-items: center;
+	gap: 5px;
+	cursor: pointer;
+}
+
+.menuItemText {
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+}
+
+.horizontalMenu {
+	display: none;
 }
 }
