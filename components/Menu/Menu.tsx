@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Icon from "@mdi/react";
 import { 
 	mdiBillboard,
@@ -27,11 +28,11 @@ export default function Menu() {
 	}
 
 	const items = [
-		{ name: "login", 	   icon: mdiLogin,     label: "Login" },
-		{ name: "signup",      icon: mdiAccountPlusOutline, label: "Sign Up"},
-    	{ name: "leaderboard", icon: mdiBillboard, label: "LeaderBoard" },
-    	{ name: "support",     icon: mdiLifebuoy,   label: "Support" },
-    	{ name: "contact",     icon: mdiEmailOutline, label: "Contact" },
+		{ name: "login", 	   link: "/sign-in",   icon: mdiLogin,              label: "Login" },
+		{ name: "signup",      link: "/sign-up",   icon: mdiAccountPlusOutline, label: "Sign Up"},
+    	{ name: "leaderboard", link: "/leaderboard", icon: mdiBillboard,          label: "LeaderBoard" },
+    	{ name: "support",     link: "/support",   icon: mdiLifebuoy,           label: "Support" },
+    	{ name: "contact",     link: "/contact",   icon: mdiEmailOutline,       label: "Contact" },
   	]
 
 	return (
@@ -47,12 +48,16 @@ export default function Menu() {
 			{isExpanded && <div className={styles.expandingMenu} onMouseLeave={handleMouseLeave} >
 				<ul className={styles.horizontalMenu}>
 					<li className={styles.menuitem}>
-						<Icon path={mdiLogin} size={1} />
-						Login
+						<Link href="/sign-in" className={styles.menuItemLink}>
+							<Icon path={mdiLogin} size={1} />
+							Login
+						</Link>
 					</li>
 					<li className={styles.menuitem}>
-						<Icon path={mdiAccountPlusOutline} size={1} />
-						Sign Up
+						<Link href="/sign-up" className={styles.menuItemLink}>
+							<Icon path={mdiAccountPlusOutline} size={1} />
+							Sign Up
+						</Link>
 					</li>
 					<li className={styles.menuitem}>
 						<Icon path={mdiBillboard} size={1} />
@@ -75,10 +80,12 @@ export default function Menu() {
       						onMouseEnter={() => setHoveredItem(item.name)}
       						onMouseLeave={() => setHoveredItem(null)}
     					>
-      						<Icon path={item.icon} size={1} />
-      							{hoveredItem === item.name && (
-        							<p className={styles.menuItemText}>{item.label}</p>
-      							)}
+    						<Link href={item.link} className={styles.menuItemLink}>
+      							<Icon path={item.icon} size={1} />
+      								{hoveredItem === item.name && (
+        								<p className={styles.menuItemText}>{item.label}</p>
+      								)}
+      						</Link>
     					</li>
   					))}
 				</ul>
