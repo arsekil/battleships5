@@ -42,35 +42,24 @@ export default function Menu() {
 			</div>
 			{isExpanded && 
 				<div className={styles.expandedMenuStart}>
-					 <Image src={"/lighthouse.png"} width={50} height={50} alt="lighthouse" unoptimized/>
+					<Link href="/" className={styles.menuItemLink}>
+					 	<Image src={"/lighthouse.png"} width={50} height={50} alt="lighthouse" unoptimized/>
+					</Link>
 				</div>
 			}
 			{isExpanded && <div className={styles.expandingMenu} onMouseLeave={handleMouseLeave} >
 				<ul className={styles.horizontalMenu}>
-					<li className={styles.menuitem}>
-						<Link href="/sign-in" className={styles.menuItemLink}>
-							<Icon path={mdiLogin} size={1} />
-							Login
-						</Link>
-					</li>
-					<li className={styles.menuitem}>
-						<Link href="/sign-up" className={styles.menuItemLink}>
-							<Icon path={mdiAccountPlusOutline} size={1} />
-							Sign Up
-						</Link>
-					</li>
-					<li className={styles.menuitem}>
-						<Icon path={mdiBillboard} size={1} />
-						LeaderBoard
-					</li>
-					<li className={styles.menuitem}>
-						<Icon path={mdiLifebuoy} size={1} />
-						Support
-					</li>
-					<li className={styles.menuitem}>
-						<Icon path={mdiEmailOutline} size={1} />
-						Contact
-					</li>
+					{items.map((item) => (
+    					<li
+      						key={item.name}
+      						className={styles.menuitem}
+    					>
+    						<Link href={item.link} className={styles.menuItemLink}>
+      							<Icon path={item.icon} size={1} />
+        						<p className={styles.menuItemText}>{item.label}</p>
+      						</Link>
+    					</li>
+  					))}
 				</ul>
 				<ul className={styles.verticalMenu}>
 					{items.map((item) => (
