@@ -37,7 +37,7 @@ export default function RootLayout({
             <nav className={styles.nav}>
               <Menu />
             </nav>
-            <section>
+            <section className={styles.children}>
               {children}
             </section>
           </div>  
