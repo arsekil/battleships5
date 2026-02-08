@@ -1,8 +1,9 @@
 .naval {
 	position: relative;
+	margin: 0;
+	padding: 0;
 	width: 100%;
-	min-height: 900px;
-	height: 100vh;
+	min-height: 850px;
 	background-image: url('/naval_back_gray.jpg');
 	background-size: contain;
 	background-repeat: repeat;
@@ -17,11 +18,13 @@
 }
 
 .children {
-	width: 1000px;
-	height: 650px;
-	background-color: red;
+	position: absolute;
+	margin: 100px 150px;
+	width: 1050px;
+	height: 653px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-items: center;
+	background-color: lightslategray;
 }
