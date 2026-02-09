@@ -2,7 +2,7 @@
 
 ## Release 0.1
 
-- [ ] Basic Game Logic & UI
+- [/] Basic Game Logic & UI
 - [ ] User Management
 - [ ] Player creation
 - [ ] Authentication

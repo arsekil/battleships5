@@ -23,11 +23,11 @@ export default function Menu() {
 	const [isExpanded, setIsExpanded] = React.useState<boolean>(false);
 	const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
 
-	const handleMouseEnter = () => {
+	const handleStart = () => {
 		setIsExpanded(true);
 	}
 
-	const handleMouseLeave = () => {
+	const handleEnd = () => {
 		setIsExpanded(false);
 	}
 
@@ -43,62 +43,14 @@ export default function Menu() {
 	]
 
 	return (
-		<menu className={styles.menu}>
-			<div className={styles.container} onMouseEnter={handleMouseEnter}>
-				{!isExpanded && <Image src={"/ship.svg"} width={50} height={50} alt="ship" unoptimized />}
+		<menu className={styles.menu}>			
+			<div className={styles.expandedMenuStart} onMouseEnter={handleStart}>
+				<Link href="/" className={styles.menuItemLink}>
+					<Image src={"/lighthouse.png"} width={70} height={70} alt="lighthouse" unoptimized />
+				</Link>
 			</div>
-			{isExpanded &&
-				<div className={styles.expandedMenuStart}>
-					<Link href="/" className={styles.menuItemLink}>
-						<Image src={"/lighthouse.png"} width={50} height={50} alt="lighthouse" unoptimized />
-					</Link>
-				</div>
-			}
-			{isExpanded && <div className={styles.expandingMenu} onMouseLeave={handleMouseLeave} >
-				<ul className={styles.horizontalMenu}>
-					{isLoaded && !isSignedIn &&
-						items.slice(0, 2).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
-							<li
-								key={item.name}
-								className={styles.menuitem}
-							>
-								<Link href={item.link} className={styles.menuItemLink}>
-									<Icon path={item.icon} size={1} />
-									<p className={styles.menuItemText}>{item.label}</p>
-								</Link>
-							</li>
-						))}
-					{isLoaded && isSignedIn &&
-						items.slice(2, 5).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
-							<li
-								key={item.name}
-								className={styles.menuitem}
-							>
-								{item.name === "logout" ?
-									<Link href={item.link} onClick={() => signOut({ redirectUrl: '/' })} className={styles.menuItemLink}>
-										<Icon path={item.icon} size={1} />
-										<p className={styles.menuItemText}>{item.label}</p>
-									</Link>
-									:
-									<Link href={item.link} className={styles.menuItemLink}>
-										<Icon path={item.icon} size={1} />
-										<p className={styles.menuItemText}>{item.label}</p>
-									</Link>
-								}
-							</li>
-						))}
-					{items.slice(5).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
-						<li
-							key={item.name}
-							className={styles.menuitem}
-						>
-							<Link href={item.link} className={styles.menuItemLink}>
-								<Icon path={item.icon} size={1} />
-								<p className={styles.menuItemText}>{item.label}</p>
-							</Link>
-						</li>
-					))}
-				</ul>
+			{isExpanded && 
+			<div className={styles.expandingMenu} onMouseLeave={handleEnd}>
 				<ul className={styles.verticalMenu}>
 					{isLoaded && !isSignedIn &&
 						items.slice(0, 2).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
@@ -157,7 +109,7 @@ export default function Menu() {
 					))}
 				</ul>
 				<div className={styles.expandedMenuEnd}>
-					<Image src={"/ship.svg"} width={50} height={50} alt="ship" unoptimized />
+					<Image src={"/ship.svg"} width={70} height={70} alt="ship" unoptimized />
 				</div>
 			</div>}
 		</menu>
