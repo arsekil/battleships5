@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
+// import { useConvexAuth } from "convex/react";
 import Icon from "@mdi/react";
 import {
 	mdiBillboard,
@@ -17,8 +18,10 @@ import {
 } from "@mdi/js";
 import styles from "@/styles/menu.module.css";
 
+// TODO - change isSignedIn to isAuthenticated and remove useAuth from this component, only useConvexAuth 
 export default function Menu() {
-	const { isSignedIn, signOut, isLoaded } = useAuth();
+	const { isSignedIn, signOut } = useAuth();
+	// const { isAuthenticated } = useConvexAuth();
 
 	const [isExpanded, setIsExpanded] = React.useState<boolean>(false);
 	const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
@@ -43,17 +46,56 @@ export default function Menu() {
 	]
 
 	return (
-		<menu className={styles.menu}>			
+		<menu className={styles.menu}>
 			<div className={styles.expandedMenuStart} onMouseEnter={handleStart}>
 				<Link href="/" className={styles.menuItemLink}>
 					<Image src={"/lighthouse.png"} width={70} height={70} alt="lighthouse" unoptimized />
 				</Link>
 			</div>
-			{isExpanded && 
-			<div className={styles.expandingMenu} onMouseLeave={handleEnd}>
-				<ul className={styles.verticalMenu}>
-					{isLoaded && !isSignedIn &&
-						items.slice(0, 2).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
+			{isExpanded &&
+				<div className={styles.expandingMenu} onMouseLeave={handleEnd}>
+					<ul className={styles.verticalMenu}>
+						{!isSignedIn &&
+							items.slice(0, 2).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
+								<li
+									key={item.name}
+									className={styles.menuitem}
+									onMouseEnter={() => setHoveredItem(item.name)}
+									onMouseLeave={() => setHoveredItem(null)}
+								>
+									<Link href={item.link} className={styles.menuItemLink}>
+										<Icon path={item.icon} size={1} />
+										{hoveredItem === item.name && (
+											<p className={styles.menuItemText}>{item.label}</p>
+										)}
+									</Link>
+								</li>
+							))}
+						{isSignedIn &&
+							items.slice(2, 5).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
+								<li
+									key={item.name}
+									className={styles.menuitem}
+									onMouseEnter={() => setHoveredItem(item.name)}
+									onMouseLeave={() => setHoveredItem(null)}
+								>
+									{item.name === "logout" ?
+										<Link href={item.link} onClick={() => signOut({ redirectUrl: '/' })} className={styles.menuItemLink}>
+											<Icon path={item.icon} size={1} />
+											{hoveredItem === item.name && (
+												<p className={styles.menuItemText}>{item.label}</p>
+											)}
+										</Link>
+										:
+										<Link href={item.link} className={styles.menuItemLink}>
+											<Icon path={item.icon} size={1} />
+											{hoveredItem === item.name && (
+												<p className={styles.menuItemText}>{item.label}</p>
+											)}
+										</Link>}
+								</li>
+							))}
+						{items.slice(5).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
 							<li
 								key={item.name}
 								className={styles.menuitem}
@@ -68,50 +110,11 @@ export default function Menu() {
 								</Link>
 							</li>
 						))}
-					{isLoaded && isSignedIn &&
-						items.slice(2, 5).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
-							<li
-								key={item.name}
-								className={styles.menuitem}
-								onMouseEnter={() => setHoveredItem(item.name)}
-								onMouseLeave={() => setHoveredItem(null)}
-							>
-								{item.name === "logout" ?
-									<Link href={item.link} onClick={() => signOut({ redirectUrl: '/' })} className={styles.menuItemLink}>
-										<Icon path={item.icon} size={1} />
-										{hoveredItem === item.name && (
-											<p className={styles.menuItemText}>{item.label}</p>
-										)}
-									</Link>
-									:
-									<Link href={item.link} className={styles.menuItemLink}>
-										<Icon path={item.icon} size={1} />
-										{hoveredItem === item.name && (
-											<p className={styles.menuItemText}>{item.label}</p>
-										)}
-									</Link>}
-							</li>
-						))}
-					{items.slice(5).map((item: { name: string, link: string, icon: string, label: string }, idx: number) => (
-						<li
-							key={item.name}
-							className={styles.menuitem}
-							onMouseEnter={() => setHoveredItem(item.name)}
-							onMouseLeave={() => setHoveredItem(null)}
-						>
-							<Link href={item.link} className={styles.menuItemLink}>
-								<Icon path={item.icon} size={1} />
-								{hoveredItem === item.name && (
-									<p className={styles.menuItemText}>{item.label}</p>
-								)}
-							</Link>
-						</li>
-					))}
-				</ul>
-				<div className={styles.expandedMenuEnd}>
-					<Image src={"/ship.svg"} width={70} height={70} alt="ship" unoptimized />
-				</div>
-			</div>}
+					</ul>
+					<div className={styles.expandedMenuEnd}>
+						<Image src={"/ship.svg"} width={70} height={70} alt="ship" unoptimized />
+					</div>
+				</div>}
 		</menu>
 	)
 }

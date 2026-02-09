@@ -5,6 +5,7 @@ import styles from "@/styles/home.module.css";
 
 import Menu from "@/components/Menu/Menu";
 import { ClerkProvider } from "@clerk/nextjs";
+import ConvexClientProvider from "@/helpers/ConvexClientProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,19 +31,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider dynamic publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-      <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          <div className={styles.naval}>
-            <nav className={styles.nav}>
-              <Menu />
-            </nav>
-            <section className={styles.children}>
-              {children}
-            </section>
-          </div>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ClerkProvider dynamic publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>
+          <ConvexClientProvider>
+            <div className={styles.naval}>
+              <nav className={styles.nav}>
+                <Menu />
+              </nav>
+              <section className={styles.children}>
+                {children}
+              </section>
+            </div>
+          </ConvexClientProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
