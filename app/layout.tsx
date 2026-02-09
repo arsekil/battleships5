@@ -40,7 +40,7 @@ export default function RootLayout({
             <section className={styles.children}>
               {children}
             </section>
-          </div>  
+          </div>
         </body>
       </html>
     </ClerkProvider>

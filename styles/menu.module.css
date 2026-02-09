@@ -18,7 +18,7 @@
 	position: absolute;
 	top: 0px;
 	left: 20px;
-	width: 650px;
+	width: 750px;
 	height: 50px;
 	padding-left: 50px;
 	display: flex;
@@ -57,7 +57,7 @@
 
 .expandedMenuEnd {
 	position: absolute;
-	left: clamp(80%, 630px, 650px);
+	left: clamp(90%, 730px, 750px);
 	height: 50px;
 	background-color: #ffffff;
 	border-radius: 100%;
