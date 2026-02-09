@@ -1,6 +1,6 @@
 - [x] setup clerk package
 - [ ] setup user management with clerk
-  - [ ] upon user registration redirect user to create player profile
+  - [x] upon user registration redirect user to create player profile
   - [ ] copy clerk user id into player5 table and fill the rest of the fields
 - [ ] update prisma schema based on clerk setup
 - [ ] create profile page fully

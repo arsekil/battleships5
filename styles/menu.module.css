@@ -1,107 +1,9 @@
 .menu {
 	position: absolute;
-	left: -20px;
-	top: -20px;
-	width: 50px;
-	height: 50px;
-	margin: 20px;
-	z-index: 1;
-}
-
-.container {
-	background-color: #ffffff;
-	border-radius: 100%;
-	z-index: 1;
-}
-
-.expandingMenu {
-	position: absolute;
 	top: 0px;
-	left: 20px;
-	width: 650px;
-	height: 50px;
-	padding-left: 50px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-items: space-between;
-	background-color: #ffffff;
-	z-index: -1;
-}
-
-.expandingMenu::before {
-	content: "";
-	position: absolute;
-	inset: auto 0 0 0;
-	height: 5px;
-	background: url('/wave-horizontal.png') top / contain repeat-x;
-}
-
-.expandingMenu::after {
-	content: "";
-	position: absolute;
-	inset: 0 0 auto 0;
-	height: 5px;
-	background: url('/wave-horizontal.png') bottom / contain repeat-x;
-	background-size: contain;
-}
-
-.expandedMenuStart {
-	position: absolute;
 	left: 0px;
-	width: 50px;
-	height: 50px;
-	background-color: #ffffff;
-	border-radius: 100%;
-}
-
-.expandedMenuEnd {
-	position: absolute;
-	left: clamp(80%, 630px, 650px);
-	height: 50px;
-	background-color: #ffffff;
-	border-radius: 100%;
-}
-
-.horizontalMenu {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-items: center;
-	gap: 35px;
-	list-style-type: none;
-}
-
-.menuitem {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-items: center;
-	gap: 3px;
-	cursor: pointer;
-}
-
-.menuItemLink {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-items: center;
-	gap: 3px;
-	color: #000000;
-	text-decoration: none;
-}
-
-.verticalMenu {
-	display: none;
-}
-
-/* MAX-WIDTH: 500px */
-@media all and (max-width: 500px) {
-.menu {
-	position: absolute;
-	width: 50px;
+	width: 70px;
 	height: 470px;
-	margin: 20px;
 	z-index: 1;
 }
 
@@ -115,7 +17,7 @@
 	position: absolute;
 	top: 20px;
 	left: 0px;
-	width: 50px;
+	width: 70px;
 	height: 470px;
 	padding-top: 50px;
 	display: flex;
@@ -146,8 +48,8 @@
 .expandedMenuStart {
 	position: absolute;
 	left: 0px;
-	width: 50px;
-	height: 50px;
+	width: 70px;
+	height: 70px;
 	background-color: #ffffff;
 	border-radius: 100%;
 }
@@ -155,16 +57,17 @@
 .expandedMenuEnd {
 	position: absolute;
 	top: clamp(80%, 450px, 470px);
-	left: 0;
-	width: 50px;
-	height: 50px;
+	left: 0px;
+	width: 70px;
+	height: 70px;
 	background-color: #ffffff;
 	border-radius: 100%;
 }
 
 .verticalMenu {
 	position: absolute;
-	left: 13px;
+	top: 70px;
+	left: 23px;
 	display: flex;
 	flex-direction: column;
 	justify-items: center;
@@ -194,9 +97,4 @@
 	gap: 3px;
 	color: #000000;
 	text-decoration: none;
-}
-
-.horizontalMenu {
-	display: none;
-}
 }
