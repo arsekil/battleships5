@@ -17,7 +17,7 @@ export default defineSchema({
     accuracyRatio: v.number(),
     playtimeTotal: v.number(),
     rank: v.string(),
-  }),
+  }).index("by_clerk_id", ["clerk_id"]),
   game: defineTable({
     player1: v.string(),
     player2: v.string(),
@@ -29,8 +29,8 @@ export default defineSchema({
     playtime: v.number(),
   }),
   lobby: defineTable({
-    host: v.string(),
-    player2: v.string(),
+    host: v.id("player"), //v.string(),
+    player2: v.optional(v.id("player")), //v.optional(v.string()),
     message: v.string(),
   }),
   move: defineTable({
