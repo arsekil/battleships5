@@ -3,13 +3,13 @@
 ## Release 0.1
 
 - [/] Basic Game Logic & UI
-- [ ] User Management
+- [/] User Management
 - [ ] Player creation
-- [ ] Authentication
+- [X] Authentication
 
 ## Release 0.2
 
-- [ ] Lobby Page
+- [/] Lobby Page
 
 ## Release 0.3
 
