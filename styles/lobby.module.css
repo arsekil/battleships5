@@ -6,6 +6,7 @@
   grid-template-columns: 3fr 1fr 1fr;
   grid-template-rows: 1fr;
   place-items: center;
+  background-color: #f0f0f0;
 }
 
 .container > * {
