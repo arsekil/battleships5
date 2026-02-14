@@ -1,9 +1,19 @@
-import React from "react";
-import { auth } from "@clerk/nextjs/server";
+"use client";
 
-export default async function Page() {
-	const { sessionClaims } = await auth();
+import React from "react";
+import { Authenticated, Unauthenticated } from "convex/react";
+import { useUser } from "@clerk/nextjs";
+
+export default function Page() {
+	const { user } = useUser();
 	return (
-		<>Onboarding status: {`${sessionClaims?.metadata?.onboardingComplete}`}</>
+		<>
+			<Authenticated>
+				<p>User ID: {user?.id}</p>
+			</Authenticated>
+			<Unauthenticated>
+				<p>You are not authenticated. Please sign in to continue.</p>
+			</Unauthenticated>
+		</>
 	);
 }
