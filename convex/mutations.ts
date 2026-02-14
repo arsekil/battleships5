@@ -10,10 +10,11 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
   },
   handler: async (ctx, { tokenIdentifier, nickname }) => {
     const player = await ctx.db.insert("player", {
-      tokenIdentifier: tokenIdentifier.split('|').reverse().join('|'),
+      tokenIdentifier: tokenIdentifier,
       nickname: nickname,
       imgURL: "",
       xp: 0,
+      nextLevelXP: 100,
       level: 1,
       totalPoints: 0,
       gamesPlayed: 0,
@@ -23,7 +24,12 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
       loseRatio: 0,
       accuracyRatio: 0,
       playtimeTotal: 0,
-      rank: "Seaman",
+      rank: "Ensign",
+      vesselCommand: {
+        name: "Patrol Boat",
+        level: 1,
+        imgURL: "",
+      }
     });
     return player;
   },
