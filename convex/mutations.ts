@@ -3,6 +3,8 @@ import { internalMutation, mutation, type MutationCtx } from "./_generated/serve
 import { internal } from "./_generated/api";
 import { api } from "./_generated/api";
 
+
+// PLAYER FUNCTIONS
 export const createPlayer: ReturnType<typeof internalMutation> = internalMutation({
   args: {
     tokenIdentifier: v.string(),
@@ -54,10 +56,14 @@ export const deletePlayer: ReturnType<typeof mutation> = mutation({
   handler: async (ctx: MutationCtx) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      throw new Error("User must be authenticated to delete a player");
+      throw new Error("You must be authenticated to delete your player");
     }
     const player = await ctx.runQuery(api.queries.getPlayerByTokenIdentifier, { tokenIdentifier: identity?.tokenIdentifier as string });
     const deleted = await ctx.db.delete("player", player._id);
     return deleted;
   },
 });
+
+// GAME FUNCTIONS
+
+// FILE STORAGE FUNCTIONS
