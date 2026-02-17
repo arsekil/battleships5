@@ -5,8 +5,8 @@ import React from "react";
 import { useAuth } from "@clerk/clerk-react";
 // import { useConvexAuth } from "convex/react";
 
-import lighthouse from "./../../src/assets/lighthouse.png";
-import ship from "./../../src/assets/ship.svg";
+import lighthouse from "./../../assets/lighthouse.png";
+import ship from "./../../assets/ship.svg";
 
 import {
 	mdiBillboard,
@@ -32,6 +32,7 @@ type StyleProps = {
 // TODO - change isSignedIn to isAuthenticated and remove useAuth from this component, only useConvexAuth 
 export default function Menu() {
 	const { isSignedIn, signOut } = useAuth();
+	// const { isAuthenticated, isLoading } = useConvexAuth();
 
 	const [isExpanded, setIsExpanded] = React.useState<boolean>(false);
 	const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
@@ -92,7 +93,7 @@ export default function Menu() {
 						/>
 					</ul>
 					<div className={styles.expandedMenuEnd}>
-						<img src={ship} width={70} height={70} alt="ship"/>
+						<img src={ship} width={70} height={70} alt="ship" />
 					</div>
 				</div>}
 		</menu>

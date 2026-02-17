@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Authenticated, Unauthenticated } from "convex/react";
-import { useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/clerk-react";
 
-export default function Page() {
+export default function Onboarding() {
 	const { user } = useUser();
 	return (
 		<>

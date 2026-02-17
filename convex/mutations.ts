@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { internalMutation, mutation } from "./_generated/server";
+import { internalMutation, mutation, type MutationCtx } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { api } from "./_generated/api";
 
@@ -8,7 +8,7 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
     tokenIdentifier: v.string(),
     nickname: v.string(),
   },
-  handler: async (ctx, { tokenIdentifier, nickname }) => {
+  handler: async (ctx: MutationCtx, { tokenIdentifier, nickname }) => {
     const player = await ctx.db.insert("player", {
       tokenIdentifier: tokenIdentifier,
       nickname: nickname,
@@ -29,15 +29,14 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
         name: "Patrol Boat",
         level: 1,
         imgURL: "",
-      }
+      },
     });
     return player;
   },
 });
 
 export const createNewPlayer: ReturnType<typeof mutation> = mutation({
-  args: {},
-  handler: async (ctx) => {
+  handler: async (ctx: MutationCtx) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
       throw new Error("User must be authenticated to create a player");
@@ -51,10 +50,8 @@ export const createNewPlayer: ReturnType<typeof mutation> = mutation({
   },
 });
 
-
 export const deletePlayer: ReturnType<typeof mutation> = mutation({
-  args: {},
-  handler: async (ctx) => {
+  handler: async (ctx: MutationCtx) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
       throw new Error("User must be authenticated to delete a player");
