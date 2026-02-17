@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as clerkBackendApi from "../clerkBackendApi.js";
 import type * as http from "../http.js";
 import type * as mutations from "../mutations.js";
 import type * as queries from "../queries.js";
@@ -19,6 +20,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  clerkBackendApi: typeof clerkBackendApi;
   http: typeof http;
   mutations: typeof mutations;
   queries: typeof queries;

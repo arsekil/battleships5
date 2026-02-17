@@ -1,13 +1,15 @@
 import { httpRouter } from "convex/server";
-import { httpAction } from "./_generated/server";
+import { corsRouter } from "convex-helpers/server/cors";
+import { getAllUsers } from "./clerkBackendApi";
 
 const http = httpRouter();
+const cors = corsRouter(http);
 
-http.route({
-  path: "/",
+cors.route({
+  path: "/users",
   method: "GET",
-  handler: httpAction(async (ctx, request) => {
-    return new Response(`Hello from ${request.url}`);
-  }),
+  handler: getAllUsers  
 });
+
+
 export default http;
