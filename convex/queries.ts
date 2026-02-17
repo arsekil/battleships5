@@ -1,8 +1,7 @@
-import { query } from "./_generated/server";
+import { query, type QueryCtx } from "./_generated/server";
 
 export const getPlayerByTokenIdentifier: ReturnType<typeof query> = query({
-  args: {},
-  handler: async (ctx) => {
+  handler: async (ctx: QueryCtx) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
       throw new Error("User must be authenticated to create a player");

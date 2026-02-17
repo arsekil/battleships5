@@ -1,37 +1,29 @@
-"use client";
+// TODO rewrite function to only update metadata when needed based on existing user in Convex DB
 
-import { useEffect } from "react";
-import { useAuth } from "@clerk/clerk-react";
-import { clerkClient } from "../../helpers/clerkClient";
+// "use server";
 
-export default function Metadata() {
-	const { userId } = useAuth();
+// import React from "react";
+// import { useAuth } from "@clerk/clerk-react";
+// import { useConvexAuth, useMutation } from "convex/react";
+// import { useNavigate } from "react-router";
+// import { api } from "../../../convex/_generated/api";
 
-	useEffect(() => {
-		if (!userId) {
-			return;
-		}
+// export default function Metadata() {
+// 	const { userId } = useAuth();
+// 	const { isAuthenticated } = useConvexAuth();
+// 	const navigate = useNavigate();
+// 	const updateMetadata = useMutation(api.mutations.updateMetadata)
 
-		clerkClient.users.updateUserMetadata(userId, {
-			publicMetadata: {
-				onboardingComplete: false,
-				skipOnboardingTemporarily: false
-			}
-		})
-			.then(() => {
+// 	React.useEffect(() => {
+// 		if (!userId || !isAuthenticated) {
+// 			return;
+// 		}
 
-			})
-			.catch(error => {
-				console.error("Failed:", error);
-				return (
-					<div>
-						<p>Failed to initialize metadata.</p>
-						<p>{error}</p>
-					</div>
-				)
-			});
+// 		updateMetadata({ userId });
+// 		navigate('/playercreate', { replace: true });
+		
 
-	}, [userId]);
+// 	}, [isAuthenticated, navigate, updateMetadata, userId]);
 
-	return <div>Initializing...</div>;
-}
+// 	return <div>Initializing...</div>;
+// }
