@@ -12,7 +12,7 @@ cors.route({
 });
 
 cors.route({
-  pathPrefix: "/user/",
+  path: "/user/metadata",
   method: "PATCH",
   handler: updateUserMetadata
 });
