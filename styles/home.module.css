@@ -7,7 +7,7 @@
 	min-width: 100%;
 	min-height: 100%;
 	height: 100vh;
-	background-image: url('./assets/naval_back_gray.jpg');
+	background-image: url('/naval_back_gray.jpg');
 	background-size: contain;
 	background-repeat: repeat;
 }

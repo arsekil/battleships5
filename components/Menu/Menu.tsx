@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-
+import Image from "next/image";
 import { useAuth } from "@clerk/clerk-react";
 // import { useConvexAuth } from "convex/react";
 
-import lighthouse from "./../../assets/lighthouse.png";
-import ship from "./../../assets/ship.svg";
+import lighthouse from "../../public/lighthouse.png";
+import ship from "../../public/ship.svg";
 
 import {
 	mdiBillboard,
@@ -60,7 +60,7 @@ export default function Menu() {
 		<menu className={styles.menu}>
 			<div className={styles.expandedMenuStart} onMouseEnter={handleStart}>
 				<a href="/" className={styles.menuItemLink}>
-					<img src={lighthouse} width={70} height={70} alt="lighthouse" />
+					<Image src={lighthouse} width={70} height={70} alt="lighthouse" loading="eager" unoptimized />
 				</a>
 			</div>
 			{isExpanded &&
@@ -93,7 +93,7 @@ export default function Menu() {
 						/>
 					</ul>
 					<div className={styles.expandedMenuEnd}>
-						<img src={ship} width={70} height={70} alt="ship" />
+						<Image src={ship} width={70} height={70} alt="ship" loading="eager" unoptimized />
 					</div>
 				</div>}
 		</menu>

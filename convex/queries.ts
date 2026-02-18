@@ -10,3 +10,24 @@ export const getPlayerByTokenIdentifier: ReturnType<typeof query> = query({
     return player;
   },
 });
+
+export const getPlayerByNickname: ReturnType<typeof query> = query({
+  handler: async (ctx: QueryCtx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("User must be authenticated to create a player");
+    }
+    const player = await ctx.db.query("player").withIndex("by_name", (q) => q.eq("nickname", identity?.nickname as string)).first();
+    return player;
+  },
+});
+
+export const getUserBySubject: ReturnType<typeof query> = query({
+  handler: async (ctx: QueryCtx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("User must be authenticated to create a player");
+    }
+    return identity?.subject as string;
+  },
+});

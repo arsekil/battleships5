@@ -5,6 +5,6 @@ import { SignUp } from '@clerk/clerk-react'
 
 export default function SignUpPage() {
   return (
-    <SignUp routing="path" path="/sign-up" forceRedirectUrl={'/playercreate'}/>
+    <SignUp routing="path" path="/sign-up" forceRedirectUrl={'/metadata'}/>
   )
 }

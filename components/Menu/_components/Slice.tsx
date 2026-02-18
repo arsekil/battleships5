@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Icon from "@mdi/react";
 
 interface SliceDataProps {
@@ -34,12 +35,12 @@ export default function Slice({
 					onMouseEnter={() => setHoveredItem(item.name)}
 					onMouseLeave={() => setHoveredItem(null)}
 				>
-					<a href={item.link} className={styles.menuItemLink}>
+					<Link href={item.link} className={styles.menuItemLink}>
 						<Icon path={item.icon} size={1} />
 						{hoveredItem === item.name && (
 							<p className={styles.menuItemText}>{item.label}</p>
 						)}
-					</a>
+					</Link>
 				</li>
 			))}
 		</>
