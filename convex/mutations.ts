@@ -32,6 +32,10 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
         level: 1,
         imgURL: "",
       },
+      metadata: {
+        onboardingComplete: false,
+        skipOnboardingTemporarily: false
+      }
     });
     return player;
   },
@@ -43,7 +47,7 @@ export const createNewPlayer: ReturnType<typeof mutation> = mutation({
     if (!identity) {
       throw new Error("User must be authenticated to create a player");
     }
-    const existing = await ctx.runQuery(api.queries.getPlayerByTokenIdentifier, {});
+    const existing = await ctx.runQuery(api.queries.getUserByTokenIdentifier, {});
     if (existing) {
       return;
     }
@@ -58,7 +62,7 @@ export const deletePlayer: ReturnType<typeof mutation> = mutation({
     if (!identity) {
       throw new Error("You must be authenticated to delete your player");
     }
-    const player = await ctx.runQuery(api.queries.getPlayerByTokenIdentifier, { tokenIdentifier: identity?.tokenIdentifier as string });
+    const player = await ctx.runQuery(api.queries.getUserByTokenIdentifier, { tokenIdentifier: identity?.tokenIdentifier as string });
     const deleted = await ctx.db.delete("player", player._id);
     return deleted;
   },

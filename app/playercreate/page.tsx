@@ -19,12 +19,12 @@ export default function PlayerCreate() {
       return;
     }
     
+    playerCreated.current = true;
     
     const createPlayer = async () => {
       try {
         setIsLoading(true);
         createNewPlayer({});
-        playerCreated.current = true;
         router.replace('/onboarding');
       } catch (err) {
         console.error("Failed to create player:", err);

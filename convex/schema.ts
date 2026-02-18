@@ -23,6 +23,10 @@ export default defineSchema({
       level: v.number(),
       imgURL: v.string(),
     }),
+    metadata: v.object({
+      onboardingComplete: v.boolean(),
+      skipOnboardingTemporarily: v.boolean(),
+    }),
   }).index("by_token", ["tokenIdentifier"]).index("by_name", ["nickname"]),
   game: defineTable({
     host: v.id("player"),
