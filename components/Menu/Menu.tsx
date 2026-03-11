@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/nextjs";
 // import { useConvexAuth } from "convex/react";
 
 import lighthouse from "../../public/lighthouse.png";

@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@clerk/nextjs/server";
-import { redirect, RedirectType } from "next/navigation";
+import ClientRedirect from "./ClientRedirect";
 
 export default async function Page() {
   try {
@@ -15,17 +15,18 @@ export default async function Page() {
       },
       body: JSON.stringify({
         public_metadata: {
-          "skipOnboardingTemporarily": true
+          "onbardingComplete": false
         },
         private_metadata: {},
         unsafe_metadata: {}
       })
     }).catch((error) => {
-        console.log("Error updating Clerk user metadata: ", error)
+      console.log("Error updating Clerk user metadata: ", error)
     });
   } catch (error) {
-    console.log("Metadata server page got an error: ", error)
-    // TODO handle error properly, maybe redirect to an error page or show a message to the user
+
   }
-  redirect('/account', RedirectType.push);
+  return (
+    <ClientRedirect destination={'/playercreate'} />
+  )
 }

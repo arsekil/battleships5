@@ -31,10 +31,6 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
         name: "Patrol Boat",
         level: 1,
         imgURL: "",
-      },
-      metadata: {
-        onboardingComplete: false,
-        skipOnboardingTemporarily: false
       }
     });
     return player;
