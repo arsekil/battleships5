@@ -4,7 +4,7 @@ import { internal } from "./_generated/api";
 import { api } from "./_generated/api";
 
 
-// PLAYER FUNCTIONS
+// PLAYER MUTATIONS
 export const createPlayer: ReturnType<typeof internalMutation> = internalMutation({
   args: {
     tokenIdentifier: v.string(),
@@ -64,6 +64,6 @@ export const deletePlayer: ReturnType<typeof mutation> = mutation({
   },
 });
 
-// GAME FUNCTIONS
+// GAME MUTATIONS
 
-// FILE STORAGE FUNCTIONS
+// FILE STORAGE MUTATIONS

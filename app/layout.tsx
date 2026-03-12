@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'BattleShips',
-  description: 'A battleship clone game made with React, NextJS, Convex, Clerk',
+  description: 'A battleship clone',
 }
 
 export default function RootLayout({

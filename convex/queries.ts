@@ -1,5 +1,6 @@
 import { query, type QueryCtx } from "./_generated/server";
 
+// PLAYER QUERIES
 export const getUserByTokenIdentifier: ReturnType<typeof query> = query({
   handler: async (ctx: QueryCtx) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -31,3 +32,7 @@ export const getUserBySubject: ReturnType<typeof query> = query({
     return identity?.subject as string;
   },
 });
+
+// GAME QUERIES
+
+// FILE STORAGE QUERIES

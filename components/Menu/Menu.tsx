@@ -29,7 +29,7 @@ type StyleProps = {
 	menuItemText: string;
 }
 
-// TODO - change isSignedIn to isAuthenticated and remove useAuth from this component, only useConvexAuth 
+// TODO - change isSignedIn to isAuthenticated and remove useAuth from this component, only use useConvexAuth 
 export default function Menu() {
 	const { isSignedIn, signOut } = useAuth();
 	// const { isAuthenticated, isLoading } = useConvexAuth();
@@ -83,7 +83,8 @@ export default function Menu() {
 								hoveredItem={hoveredItem}
 								setHoveredItem={setHoveredItem}
 								styles={styles as StyleProps}
-								signOut={signOut} />}
+								signOut={signOut}
+							/>}
 						<Slice
 							data={items}
 							sliceOne={5}

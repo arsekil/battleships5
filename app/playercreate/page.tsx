@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
-import { useRouter } from "next/navigation";
 import { ConvexError } from "convex/values";
 
+
+// TODO need to add some throttling
 export default function PlayerCreate() {
   const router = useRouter();
   const playerCreated = React.useRef(false);
@@ -29,7 +31,7 @@ export default function PlayerCreate() {
       } catch (err) {
         console.error("Failed to create player:", err);
         setError(err instanceof ConvexError ? err.message : "Failed to create player");
-        playerCreated.current = false; // Allow retry
+        playerCreated.current = false;
       } finally {
         setIsLoading(false);
       }

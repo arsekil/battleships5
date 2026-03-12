@@ -24,7 +24,7 @@ export default async function Page() {
       console.log("Error updating Clerk user metadata: ", error)
     });
   } catch (error) {
-
+     console.log('Error on updateMetadata Server Page', error);
   }
   return (
     <ClientRedirect destination={'/playercreate'} />
