@@ -4,7 +4,7 @@ import { internal } from "./_generated/api";
 import { api } from "./_generated/api";
 
 
-// PLAYER FUNCTIONS
+// PLAYER MUTATIONS
 export const createPlayer: ReturnType<typeof internalMutation> = internalMutation({
   args: {
     tokenIdentifier: v.string(),
@@ -31,7 +31,7 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
         name: "Patrol Boat",
         level: 1,
         imgURL: "",
-      },
+      }
     });
     return player;
   },
@@ -43,7 +43,7 @@ export const createNewPlayer: ReturnType<typeof mutation> = mutation({
     if (!identity) {
       throw new Error("User must be authenticated to create a player");
     }
-    const existing = await ctx.runQuery(api.queries.getPlayerByTokenIdentifier, {});
+    const existing = await ctx.runQuery(api.queries.getUserByTokenIdentifier, {});
     if (existing) {
       return;
     }
@@ -58,12 +58,12 @@ export const deletePlayer: ReturnType<typeof mutation> = mutation({
     if (!identity) {
       throw new Error("You must be authenticated to delete your player");
     }
-    const player = await ctx.runQuery(api.queries.getPlayerByTokenIdentifier, { tokenIdentifier: identity?.tokenIdentifier as string });
+    const player = await ctx.runQuery(api.queries.getUserByTokenIdentifier, { tokenIdentifier: identity?.tokenIdentifier as string });
     const deleted = await ctx.db.delete("player", player._id);
     return deleted;
   },
 });
 
-// GAME FUNCTIONS
+// GAME MUTATIONS
 
-// FILE STORAGE FUNCTIONS
+// FILE STORAGE MUTATIONS
