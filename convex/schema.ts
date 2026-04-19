@@ -18,12 +18,26 @@ export default defineSchema({
     accuracyRatio: v.number(),
     playtimeTotal: v.number(),
     rank: v.string(),
-    vesselCommand: v.object({
-      name: v.string(),
-      level: v.number(),
-      imgURL: v.string(),
-    }),
+    selectedCommander: v.id("commanderTypes"),
+    commanderXP: v.number(),
+    commanderLevel: v.number(),
+    unlockedCommanders: v.array(v.id("commanderTypes")),
   }).index("by_token", ["tokenIdentifier"]).index("by_name", ["nickname"]),
+  commanderTypes: defineTable({
+    name: v.string(),
+    rank: v.string(),
+    difficulty: v.union(v.literal("cadet"), v.literal("ensign"), 
+                      v.literal("lieutenant"), v.literal("commander"), v.literal("admiral")),
+    abilities: v.array(v.object({
+      name: v.string(),
+      description: v.string(),
+      effect: v.string(),
+      usesPerGame: v.number(),
+      cooldown: v.optional(v.number())
+    })),
+    unlockLevel: v.number(),
+    iconUrl: v.string(),
+  }),
   game: defineTable({
     host: v.id("player"),
     opponent: v.id("player"),

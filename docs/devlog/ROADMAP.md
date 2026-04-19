@@ -11,6 +11,9 @@
 ```text
 ├── [ ] User Management
 |    ├── [ ] Onboarding flow (commander type, display name, theme)
+|         ├── [ ] Theme Selector
+|         ├── [ ] Display Name Prompt
+|         └── [ ] Commander Selector
 |    ├── [ ] Profile display component
 |    ├── [ ] Settings page
 |    └── [X] Player schema in Convex (ready for stats)

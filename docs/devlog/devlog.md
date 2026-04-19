@@ -128,3 +128,34 @@ Feedback — every interaction should have a visible response.
 | 8 | Aircraft Carrier	| Recon Flight	| Reveal 3 random enemy cells at game start |
 | 9 | Dreadnought |	Bombardment	| Fire at 3 cells in a line |
 | 10 | Submarine | Ambush | First attack does double damage |
+
+
+
+Ship Type	Fire Rate	Reload Turns	              Movement  	Special
+Patrol Boat	Fast    	0 turns (fire every turn)       Fast    	-
+Corvette	Fast    	0 turns	                        Fast    	-
+Frigate 	Medium  	1 turn cooldown                 Medium   	Sonar
+Destroyer	Medium  	1 turn                  	Medium  	Anti-sub
+Cruiser 	Medium  	1 turn                  	Slow    	-
+Battlecruiser	Slow    	2 turns                 	Fast    	-
+Battleship	Slow    	2 turns                 	Very Slow	-
+Carrier	        Very Slow	3 turns                  	Very Slow	Launch planes
+Dreadnought	Very Slow	3 turns                     	Very Slow	Mega damage
+Submarine	Medium  	1 turn	                        Slow    	Hidden
+
+
+
+
+  ┌────────────┬────────────┬────────────────┐                 
+  │ Difficulty │    Rank    │ Key for Convex │
+  ├────────────┼────────────┼────────────────┤                 
+  │ Strategist │ Cadet      │ "cadet"        │                 
+  ├────────────┼────────────┼────────────────┤
+  │ Aggressor  │ Ensign     │ "ensign"       │
+  ├────────────┼────────────┼────────────────┤                 
+  │ Tactician  │ Lieutenant │ "lieutenant"   │
+  ├────────────┼────────────┼────────────────┤                 
+  │ Veteran    │ Commander  │ "commander"    │                 
+  ├────────────┼────────────┼────────────────┤
+  │ Legend     │ Admiral    │ "admiral"      │
+  └────────────┴────────────┴────────────────┘

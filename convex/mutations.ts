@@ -9,8 +9,9 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
   args: {
     tokenIdentifier: v.string(),
     nickname: v.string(),
+    selectedCommander: v.id("commanderTypes"),
   },
-  handler: async (ctx: MutationCtx, { tokenIdentifier, nickname }) => {
+  handler: async (ctx: MutationCtx, { tokenIdentifier, nickname, selectedCommander }) => {
     const player = await ctx.db.insert("player", {
       tokenIdentifier: tokenIdentifier,
       nickname: nickname,
@@ -27,18 +28,20 @@ export const createPlayer: ReturnType<typeof internalMutation> = internalMutatio
       accuracyRatio: 0,
       playtimeTotal: 0,
       rank: "Ensign",
-      vesselCommand: {
-        name: "Patrol Boat",
-        level: 1,
-        imgURL: "",
-      }
+      selectedCommander: selectedCommander,
+      commanderXP: 0,
+      commanderLevel: 1,
+      unlockedCommanders: [],
     });
     return player;
   },
 });
 
 export const createNewPlayer: ReturnType<typeof mutation> = mutation({
-  handler: async (ctx: MutationCtx) => {
+  args: {
+    selectedCommander: v.id("commanderTypes"),
+  },
+  handler: async (ctx: MutationCtx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
       throw new Error("User must be authenticated to create a player");
@@ -47,7 +50,7 @@ export const createNewPlayer: ReturnType<typeof mutation> = mutation({
     if (existing) {
       return;
     }
-    const player = await ctx.runMutation(internal.mutations.createPlayer, { tokenIdentifier: identity?.tokenIdentifier as string, nickname: identity?.nickname as string });
+    const player = await ctx.runMutation(internal.mutations.createPlayer, { tokenIdentifier: identity?.tokenIdentifier as string, nickname: identity?.nickname as string, selectedCommander: args.selectedCommander });
     return player;
   },
 });
