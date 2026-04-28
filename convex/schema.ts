@@ -60,15 +60,20 @@ export default defineSchema({
   .index("by_opponent", ["opponent"])
   .index("by_player", ["host", "opponent"]) // Composite for "games between X and Y"
   .index("by_status", ["status"])
-  .index("by_winner", ["winner"]),
-  chatRoom: defineTable({
+    .index("by_winner", ["winner"]),
+  lobby: defineTable({
+    playerId: v.id("player"),
+    message: v.string(),
+  })
+  .index("by_playerId", ["playerId"]),
+  gameChatRoom: defineTable({
     createdBy: v.id("player"),
     lastActivity: v.number(),
     isActive: v.boolean(),
   })
   .index("by_active", ["isActive", "lastActivity"]),
-  chatMessage: defineTable({
-    chatRoomId: v.id("chatRoom"),
+  gameChatMessage: defineTable({
+    chatRoomId: v.id("gameChatRoom"),
     playerId: v.id("player"),
     message: v.string(),
     timestamp: v.number(),

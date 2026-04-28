@@ -14,7 +14,8 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
   if (!isAuthenticated && !isPublicRoute(req)) return redirectToSignIn({ returnBackUrl: req.url })
 
   // TODO enable onboarding after implementing it, for now we want to allow users to access the app without completing onboarding
-  // if (isAuthenticated && sessionClaims?.metadata?.onboardingComplete === "false") {
+  // if (isAuthenticated && sessionClaims?.metadata?.onboardingComplete === "false" || 
+  // isAuthenticated && sessionClaims?.metadata?.skipOnboardingTemporarily === "true") {
   //   const onboardingUrl = new URL('/onboarding', req.url)
   //   return NextResponse.redirect(onboardingUrl)
   // }
