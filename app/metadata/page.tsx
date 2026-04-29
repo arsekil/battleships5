@@ -15,7 +15,7 @@ export default async function Page() {
       },
       body: JSON.stringify({
         public_metadata: {
-          "onbardingComplete": false
+          "onboardingComplete": false
         },
         private_metadata: {},
         unsafe_metadata: {}
@@ -27,6 +27,6 @@ export default async function Page() {
      console.log('Error on updateMetadata Server Page', error);
   }
   return (
-    <ClientRedirect destination={'/playercreate'} />
+    <ClientRedirect destination={'/onboarding'} />
   )
 }
